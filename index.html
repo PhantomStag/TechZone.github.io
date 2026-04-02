@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>TechZone | Next-Gen Technology</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .shadow-premium {
+      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .glass-nav {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+    }
+
+    /* =========================================
+           GAMING RGB DARK MODE
+        ========================================= */
+
+    /* Animated RGB gradient keyframes */
+    @keyframes rgb-shift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes glow-pulse {
+
+      0%,
+      100% {
+        opacity: 0.6;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scanline {
+      0% {
+        transform: translateY(-100%);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* Base dark body */
+    .dark body {
+      background-color: #050507 !important;
+      color: #ffffff !important;
+    }
+
+    /* Animated RGB mesh background */
+    .mesh-gradient-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .dark .mesh-gradient-bg {
+      display: block;
+      background-color: #050507;
+    }
+
+    .dark .mesh-gradient-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 15%, rgba(0, 255, 255, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 80%, rgba(200, 0, 255, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255, 0, 110, 0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 30% at 80% 10%, rgba(0, 150, 255, 0.12) 0%, transparent 50%);
+    }
+
+    .dark .mesh-gradient-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          rgba(0, 255, 255, 0.012) 0px,
+          rgba(0, 255, 255, 0.012) 1px,
+          transparent 1px,
+          transparent 4px);
+      pointer-events: none;
+    }
+
+    /* Nav */
+    .dark .glass-nav {
+      background: rgba(5, 5, 7, 0.92) !important;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.07) !important;
+      backdrop-filter: blur(20px) !important;
+    }
+
+    /* Logo text — RGB gradient */
+    .dark nav .text-zinc-900 {
+      background: linear-gradient(90deg, #00ffff, #b000ff, #ff007a, #00ffff) !important;
+      background-size: 300% 300% !important;
+      animation: rgb-shift 4s ease infinite !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      color: transparent !important;
+    }
+
+    /* Nav links */
+    .dark .text-zinc-600 {
+      color: #a0a8bb !important;
+    }
+
+    .dark nav a.text-zinc-600:hover {
+      color: #00ffff !important;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.7) !important;
+    }
+
+    .dark nav button .material-symbols-outlined {
+      color: #a0a8bb;
+    }
+
+    .dark nav button:hover .material-symbols-outlined {
+      color: #00ffff;
+    }
+
+    /* Page body bg transparent so mesh shows */
+    .dark .bg-background {
+      background-color: transparent !important;
+    }
+
+    .dark .bg-surface {
+      background-color: transparent !important;
+    }
+
+    /* All text */
+    .dark .text-on-background,
+    .dark h1,
+    .dark h2,
+    .dark h3,
+    .dark h4 {
+      color: #ffffff !important;
+    }
+
+    .dark .text-zinc-400,
+    .dark .text-zinc-500,
+    .dark .text-on-surface-variant {
+      color: #8892aa !important;
+    }
+
+    .dark .text-zinc-900 {
+      color: #ffffff !important;
+    }
+
+    .dark .text-white {
+      color: #ffffff !important;
+    }
+
+    /* Accent color — neon cyan */
+    .dark .text-primary {
+      color: #00ffff !important;
+    }
+
+    .dark .text-green-600 {
+      color: #00ff88 !important;
+    }
+
+    .dark .text-green-500 {
+      color: #00ff88 !important;
+    }
+
+    /* Cards & surfaces — dark glass with glow border */
+    .dark .bg-surface-container-low,
+    .dark .bg-surface-container-lowest {
+      background: rgba(10, 10, 18, 0.75) !important;
+      border: 1px solid rgba(0, 255, 255, 0.12) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    .dark .bg-white {
+      background: rgba(10, 10, 20, 0.85) !important;
+      border: 1px solid rgba(180, 0, 255, 0.18) !important;
+      backdrop-filter: blur(16px) !important;
+    }
+
+    .dark .bg-zinc-100 {
+      background: rgba(255, 255, 255, 0.04) !important;
+      border: 1px solid rgba(0, 255, 255, 0.08) !important;
+    }
+
+    /* Product cards */
+    .dark .group.bg-surface-container-lowest,
+    .dark .bg-surface-container-lowest.rounded-xl {
+      background: rgba(8, 8, 16, 0.9) !important;
+      border: 1px solid rgba(0, 255, 255, 0.1) !important;
+      transition: border-color 0.3s, box-shadow 0.3s !important;
+    }
+
+    .dark .group:hover.bg-surface-container-lowest,
+    .dark .bg-surface-container-lowest.rounded-xl:hover {
+      border-color: rgba(0, 255, 255, 0.45) !important;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.14), 0 0 60px rgba(180, 0, 255, 0.1) !important;
+    }
+
+    /* Wearables row items */
+    .dark .bg-surface-container-low.rounded-xl {
+      background: rgba(10, 10, 18, 0.7) !important;
+      border: 1px solid rgba(0, 255, 255, 0.1) !important;
+    }
+
+    .dark .hover\:bg-white:hover {
+      background: rgba(0, 255, 255, 0.06) !important;
+      border-color: rgba(0, 255, 255, 0.3) !important;
+    }
+
+    /* Gaming section cards */
+    .dark .bg-surface-container-low.rounded-xl.group {
+      background: rgba(8, 6, 20, 0.8) !important;
+      border: 1px solid rgba(180, 0, 255, 0.15) !important;
+    }
+
+    /* Primary button — neon cyan */
+    .dark .bg-gradient-to-tr.from-primary.to-primary-container,
+    .dark button.bg-gradient-to-tr {
+      background: linear-gradient(135deg, #00ffff, #0088ff) !important;
+      color: #050507 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.35) !important;
+    }
+
+    .dark .bg-primary {
+      background: linear-gradient(90deg, #00ffff, #b000ff) !important;
+      background-size: 200% 200% !important;
+      animation: rgb-shift 3s ease infinite !important;
+      color: #050507 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3) !important;
+    }
+
+    .dark button.bg-primary {
+      background: linear-gradient(135deg, #00ffff, #0044ff) !important;
+      color: #050507 !important;
+    }
+
+    /* Secondary / glass button */
+    .dark button[class*="border-outline-variant"] {
+      border-color: rgba(0, 255, 255, 0.3) !important;
+      color: #00ffff !important;
+    }
+
+    /* Hero badge */
+    .dark span[class*="bg-primary"] {
+      background: rgba(0, 255, 255, 0.12) !important;
+      border: 1px solid rgba(0, 255, 255, 0.3) !important;
+    }
+
+    .dark .text-primary-fixed {
+      color: #00ffff !important;
+    }
+
+    /* Special Offers section — bg */
+    .dark .bg-zinc-950,
+    .dark section.bg-zinc-950 {
+      background: #03020a !important;
+      border-top: 1px solid rgba(180, 0, 255, 0.15) !important;
+      border-bottom: 1px solid rgba(180, 0, 255, 0.15) !important;
+    }
+
+    .dark .bg-zinc-900 {
+      background: rgba(12, 8, 25, 0.95) !important;
+      border: 1px solid rgba(180, 0, 255, 0.2) !important;
+    }
+
+    .dark .bg-zinc-900.text-white {
+      color: #ffffff !important;
+    }
+
+    .dark .text-primary-container {
+      color: #00ffff !important;
+    }
+
+    .dark .border-primary-container {
+      border-color: #00ffff !important;
+    }
+
+    .dark a.inline-block.text-primary-container:hover {
+      color: #b000ff !important;
+      border-color: #b000ff !important;
+    }
+
+    /* New Arrivals bento */
+    .dark .md\:col-span-2.bg-white.rounded-2xl {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.08) 0%, rgba(180, 0, 255, 0.1) 100%) !important;
+      border: 1px solid rgba(0, 255, 255, 0.25) !important;
+    }
+
+    .dark .md\:col-span-2.bg-primary.text-white.rounded-2xl {
+      background: linear-gradient(135deg, #00ffff 0%, #7700ff 100%) !important;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2) !important;
+    }
+
+    .dark .bg-zinc-900.text-white.rounded-2xl {
+      background: rgba(10, 6, 25, 0.95) !important;
+      border: 1px solid rgba(180, 0, 255, 0.3) !important;
+    }
+
+    .dark .bg-white.rounded-2xl {
+      background: rgba(10, 10, 20, 0.85) !important;
+      border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    }
+
+    /* Add to cart button */
+    .dark button.bg-zinc-900:not([disabled]) {
+      background: linear-gradient(135deg, #00ffff, #007aff) !important;
+      color: #030307 !important;
+      font-weight: 700 !important;
+      box-shadow: 0 0 14px rgba(0, 255, 255, 0.25) !important;
+    }
+
+    .dark button.bg-zinc-200 {
+      background: rgba(80, 80, 100, 0.4) !important;
+      color: #555 !important;
+    }
+
+    /* "In Stock" badges */
+    .dark .bg-green-500 {
+      background: linear-gradient(90deg, #00ff88, #00ffcc) !important;
+      color: #030a0a !important;
+      box-shadow: 0 0 12px rgba(0, 255, 136, 0.4) !important;
+    }
+
+    .dark .bg-zinc-400 {
+      background: rgba(80, 80, 100, 0.6) !important;
+    }
+
+    /* "New" badge */
+    .dark .bg-blue-600 {
+      background: linear-gradient(90deg, #00ffff, #00aaff) !important;
+      color: #030307 !important;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.4) !important;
+    }
+
+    /* Footer */
+    .dark footer {
+      background: rgba(3, 2, 10, 0.97) !important;
+      border-top: 1px solid rgba(0, 255, 255, 0.12) !important;
+      box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.05) !important;
+    }
+
+    .dark footer .text-white {
+      color: #ffffff !important;
+    }
+
+    .dark footer .text-zinc-500 {
+      color: #5a6070 !important;
+    }
+
+    /* Newsletter/footer email input */
+    .dark input[type="email"] {
+      background: rgba(255, 255, 255, 0.05) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    }
+
+    .dark input[type="email"]::placeholder {
+      color: #556 !important;
+    }
+
+    /* Social icon */
+    .dark a[class*="rounded-full"][class*="bg-white"] {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .dark footer a[class*="rounded-full"]:hover {
+      background: linear-gradient(135deg, #00ffff, #b000ff) !important;
+    }
+
+    /* Premium shadow in dark */
+    .dark .shadow-premium {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 255, 255, 0.06) !important;
+    }
+
+    /* Category grid image overlays in dark mode */
+    .dark section a>div[class*="bg-black"],
+    .dark section>div>div[class*="bg-black"] {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.15) 100%) !important;
+    }
+
+    /* Theme toggle button itself */
+    #theme-toggle {
+      color: #a0a8bb;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .dark #theme-toggle {
+      color: #00ffff !important;
+      text-shadow: 0 0 12px rgba(0, 255, 255, 0.7) !important;
+    }
+
+    /* ── Scrolling Ticker ── */
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 28s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+      background: linear-gradient(90deg, #f1f5f9 0%, #ffffff 50%, #f1f5f9 100%);
+      border-top: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 24px 0;
+      position: relative;
+      z-index: 49;
+    }
+    .dark .ticker-wrap {
+      background: linear-gradient(90deg, #1a0036 0%, #000d1a 50%, #1a0036 100%);
+      border-top: 1px solid rgba(0,255,255,0.15);
+      border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+    .dark .ticker-wrap {
+      background: linear-gradient(90deg, #07002a 0%, #000812 50%, #07002a 100%);
+    }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#005db8",
+            "background": "#fbf9f8",
+            "surface-container-highest": "#e4e2e2",
+            "secondary-container": "#dfddf8",
+            "inverse-on-surface": "#f2f0f0",
+            "tertiary-container": "#5372bb",
+            "outline": "#717786",
+            "on-tertiary-fixed": "#001946",
+            "on-primary-fixed-variant": "#00468d",
+            "on-tertiary-fixed-variant": "#21448a",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#45455a",
+            "surface-variant": "#e4e2e2",
+            "tertiary-fixed-dim": "#b1c6ff",
+            "outline-variant": "#c0c6d6",
+            "surface-dim": "#dbdad9",
+            "surface-container": "#efeded",
+            "tertiary-fixed": "#d9e2ff",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#1b1c1c",
+            "primary-fixed-dim": "#aac7ff",
+            "surface-bright": "#fbf9f8",
+            "surface-container-low": "#f5f3f3",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#616077",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#d6e3ff",
+            "on-tertiary-container": "#fefcff",
+            "secondary": "#5d5c73",
+            "on-surface-variant": "#414754",
+            "on-primary-container": "#fefcff",
+            "on-surface": "#1b1c1c",
+            "primary": "#005ab3",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#1a1a2d",
+            "surface": "#fbf9f8",
+            "primary-container": "#0073e0",
+            "tertiary": "#3959a1",
+            "on-primary-fixed": "#001b3e",
+            "inverse-primary": "#aac7ff",
+            "surface-container-high": "#e9e8e7",
+            "inverse-surface": "#303031",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#e2e0fb",
+            "secondary-fixed-dim": "#c6c4de",
+            "on-secondary": "#ffffff"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+</head>
+
+<body class="bg-background font-body text-on-background antialiased">
+  <div class="mesh-gradient-bg"></div>
+  <!-- TopNavBar -->
+  <nav class="sticky top-0 w-full z-50 glass-nav shadow-premium">
+    <div class="flex justify-between items-center max-w-[1200px] mx-auto px-8 h-20">
+      <div class="text-2xl font-bold tracking-tighter text-zinc-900 font-headline">TechZone</div>
+      <div class="hidden md:flex items-center space-x-8 font-headline text-sm font-medium tracking-tight">
+        <a class="text-zinc-600 hover:text-blue-600 transition-all duration-300" href="#smartphones">Smartphones</a>
+        <a class="text-zinc-600 hover:text-blue-600 transition-all duration-300" href="#laptops">Laptops</a>
+        <a class="text-zinc-600 hover:text-blue-600 transition-all duration-300" href="#audio">Audio</a>
+        <a class="text-zinc-600 hover:text-blue-600 transition-all duration-300" href="#wearables">Wearables</a>
+        <a class="text-zinc-600 hover:text-blue-600 transition-all duration-300" href="#gaming">Gaming</a>
+      </div>
+      <div class="flex items-center space-x-6 text-zinc-600">
+        <button id="theme-toggle"
+          class="hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 dark:text-zinc-200">
+          <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <button id="search-btn" class="hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button id="cart-btn" class="hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 relative">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span id="cart-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <button id="profile-btn" class="hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">
+          <span class="material-symbols-outlined">person</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative h-[921px] w-full overflow-hidden flex items-center">
+    <div class="absolute inset-0 z-0">
+      <img class="w-full h-full object-cover object-center"
+        alt="Sleek gaming laptop with cyan RGB underglow on a dark cinematic background" src="hero_bg.png"
+        style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-8 w-full">
+      <div class="max-w-2xl">
+
+        <h1 class="font-headline text-6xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-6">
+          Next-Gen Technology <br /><span class="text-primary-container">Starts Here</span>
+        </h1>
+        <p class="text-zinc-400 text-lg md:text-xl mb-10 leading-relaxed max-w-lg">
+          Discover the pinnacle of engineering with TechZone's curated collection of elite gadgets and computing power.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button
+            class="px-8 py-4 bg-gradient-to-tr from-primary to-primary-container text-white rounded-xl font-bold hover:scale-105 transition-transform duration-300 shadow-lg">Shop
+            Now</button>
+          <button
+            class="px-8 py-4 border border-outline-variant/30 text-white rounded-xl font-bold hover:bg-white/10 backdrop-blur-sm transition-all duration-300">Explore
+            Products</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Scrolling Ticker -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track text-xl font-bold tracking-widest uppercase md:text-2xl py-1 text-zinc-800 dark:text-transparent">
+      <!-- duplicate the set so scroll loops seamlessly -->
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; #1 IN ASIA</span>
+      <span class="mx-8 text-purple-600 dark:text-purple-400">BEST SMARTPHONE RETAILER</span>
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; FREE SHIPPING OVER LKR 50,000</span>
+      <span class="mx-8 text-fuchsia-600 dark:text-fuchsia-400">EXCLUSIVE MEMBER REWARDS</span>
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; 2-YEAR WARRANTY ON ALL PRODUCTS</span>
+      <span class="mx-8 text-purple-600 dark:text-purple-400">GAMING DEALS EVERY FRIDAY</span>
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; CERTIFIED PREMIUM RETAILER</span>
+      <span class="mx-8 text-fuchsia-600 dark:text-fuchsia-400">OVER 50,000 HAPPY CUSTOMERS</span>
+      <!-- duplicate for seamless loop -->
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; #1 IN ASIA</span>
+      <span class="mx-8 text-purple-600 dark:text-purple-400">BEST SMARTPHONE RETAILER</span>
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; FREE SHIPPING OVER LKR 50,000</span>
+      <span class="mx-8 text-fuchsia-600 dark:text-fuchsia-400">EXCLUSIVE MEMBER REWARDS</span>
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; 2-YEAR WARRANTY ON ALL PRODUCTS</span>
+      <span class="mx-8 text-purple-600 dark:text-purple-400">GAMING DEALS EVERY FRIDAY</span>
+      <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; CERTIFIED PREMIUM RETAILER</span>
+      <span class="mx-8 text-fuchsia-600 dark:text-fuchsia-400">OVER 50,000 HAPPY CUSTOMERS</span>
+    </div>
+  </div>
+
+  <!-- Category Grid -->
+  <section class="py-24 bg-surface px-8">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+        <div>
+          <h2 class="font-headline text-4xl font-extrabold tracking-tight">Curated Ecosystems</h2>
+          <p class="text-on-surface-variant mt-2 text-lg">Every detail refined for your digital lifestyle.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 h-[600px]">
+        <a class="md:col-span-3 lg:col-span-4 relative group overflow-hidden rounded-xl bg-surface-container-low"
+          href="#smartphones">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Sleek high-end smartphone lying on a reflective glass surface with soft studio lighting and deep blue accents"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzvyEA6RpWXIgTwiU72aJ_Pfqzjsr6keMAfAKXEskkn42HACPVffIOCcpu2J6q2TxQaP2PlgW9eYqb3mosnRXbxnbldcAxQNUB3geHn9gUfmd8Dv-id-a4f-HkiYNHXf2vAaqokp9PTToriQCQNhJp9nVf0OyenfUw9qsdEeGV6EXIb3BPK3qzw2_-Ni9NdAq69RXBrrZ-c4aECyx0ZTGImP7VzQivguOoWGvlJMfih5D9fXVVRz4u5yEIFXwLWGiaCpsn8j7GkDU" />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+          <div class="absolute bottom-8 left-8">
+            <h3 class="text-white font-headline text-2xl font-bold">Smartphones</h3>
+          </div>
+        </a>
+        <a class="md:col-span-3 lg:col-span-4 relative group overflow-hidden rounded-xl bg-surface-container-low"
+          href="#laptops">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Close-up of a premium ultrabook laptop showing its metallic finish and thin profile in a bright minimalist office"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmwhHWHRJrkZ60VZkykiuDqzN-rfC5fJM13nl6T5Xo2jbuSDYIMC289ZqnEvOx7Anfpz1MkZip6sR1ayjbVjo-oJlWZ6ekVGZAx07P4neLDRwKarkVqOrQ2drjJyErEjoZV-6343gx5cn6XXumgUQPchrSfG64Sq3q-dWcKpz_eCYCB0kmchyLNAMcNUGjQJrbOdVW2VB0C4NGPWi0_f6pQGPhtdIujd-qB-l_JKezWug_gO0jtZYznbVcBPXPRTWdy4we8Tg12x4" />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+          <div class="absolute bottom-8 left-8">
+            <h3 class="text-white font-headline text-2xl font-bold">Laptops</h3>
+          </div>
+        </a>
+        <a class="md:col-span-6 lg:col-span-4 relative group overflow-hidden rounded-xl bg-surface-container-low"
+          href="#audio">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Professional studio headphones on a wooden table with soft morning light and blurred plants in background"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7QmGNJz2OnB6QG5dFg348s63kowrRNXjU2Ay5lOD7voaKtWveRBNGP1yOmgwJgPeZchHm1SbIWFVzk2e_ltQO3NeYGLXfGZIa2cgxmi2VBKeTr0vIDlmrhzzWOLlW-Kr26JPpHM2hZnr6_0hGR-q7msEN1Usq6i9DePlpl1KhIMZGyeUXeIlW-y6jqL6diGu-1zdCruJJVYHGlFSyiLwa1U9CSJcrM__ZYkg-uxm1mReNVUBFD1ENukQp8nRMseeJeYpHMx-sorY" />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+          <div class="absolute bottom-8 left-8">
+            <h3 class="text-white font-headline text-2xl font-bold">Audio &amp; Headphones</h3>
+          </div>
+        </a>
+        <a class="md:col-span-3 lg:col-span-6 relative group overflow-hidden rounded-xl bg-surface-container-low"
+          href="#wearables">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="High-tech fitness smartwatch on a wrist against a clean architectural concrete background with natural sunlight"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9d5iQkMnzEV1D0cU2PuS6SHiD9KYu8MWkQLoOB2mIojGUDM_ZNHnaWsB1WT2EGv8bsLAogtsyDCHgXwQU2zCPA7k__FRJoM61o-P84DPHzi6ZJC9c90m_wd0PP5XmNnESGGdqW515kDZDHoXBuJz3tIppLka1kti9l2zvxSK2eY7MwNT1OsiXX2Hd-2H_vZDjAgLSo1A2XKcbFwLx9ms7Ho7udv_Zhdt6i0fvRpbS5Gvn2TWWE_gzv6D599Rf62XXpcbXf798ER8" />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+          <div class="absolute bottom-8 left-8">
+            <h3 class="text-white font-headline text-2xl font-bold">Wearables</h3>
+          </div>
+        </a>
+        <a class="md:col-span-3 lg:col-span-6 relative group overflow-hidden rounded-xl bg-surface-container-low"
+          href="#gaming">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Mechanical gaming keyboard with vibrant RGB lighting in a dark room focusing on the textured keys"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsDu6d2A1gqtMfOitqcqEA7rCxn9b0n_N9Tsrzm5ovKNta-U-JEZtAdRV1cS6Ql6avStoIXXZjiBLCR6pT2sTtqCP1HJJznRJ9AMc59jCoaSeFUVQCsyEct2garoIs4RMHvGqUVf510NfIinax_3EFd30H0fmNIhQZJMy41LQOk2GNQRsFOR1L_EuN11uAbTpJ9ZSCheOUn6qbSeeNdqxag53_mRhj8pP7ZFmll8-jnA9WTXN1fPZf_CsNwKP2XauwXbBoWM3qXn8" />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+          <div class="absolute bottom-8 left-8">
+            <h3 class="text-white font-headline text-2xl font-bold">Gaming Accessories</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Smartphones Section -->
+  <section class="py-24 bg-surface-container-low px-8" id="smartphones">
+    <div class="max-w-[1200px] mx-auto">
+      <h2 class="font-headline text-3xl font-bold mb-12">Smartphones</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-premium hover:scale-[1.02] transition-all duration-300">
+          <div class="h-64 overflow-hidden relative">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              data-alt="Modern smartphone in charcoal gray with triple camera system shown from back angle"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHIEhm9lDxMTWdwi47kdjHdD6w6UxIjiFuBu1_n3U_KJ_uJ821E3sXqdxVylDefHYK5T35qjNhCACf2ZtUiuuqOTI4t4GN0f3_mMiK9cbHFTdVl9pag1szr5HNTTz4t8G3SWu1kM1qi6YscOYlzbl2it4Jzqy-TNhKjsoQXqGTNLynzG9St6EhD1le9rHJ7sAbTejeIY08Pvjh7vkACdcbJilAI69GhpJiA2khdURuyz7GO0jCPVyUC0dub-qDcDQ_2SlS67Vhssw" />
+            <span
+              class="absolute top-4 left-4 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">In
+              Stock</span>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline text-xl font-bold mb-2">TechZone X Pro</h3>
+            <p class="text-primary font-bold text-2xl mb-4">LKR 280,000</p>
+            <button data-name="TechZone X Pro" data-price="280000"
+              class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Add
+              to Cart</button>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-premium hover:scale-[1.02] transition-all duration-300">
+          <div class="h-64 overflow-hidden relative">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              data-alt="Lightweight white smartphone with sleek minimal design on a pastel background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGieiomBfqsnPfdTU1eNIO6XixHrN1pjwbsXA-uGbVDTF6d7NSvQzkmDGw-Bw_mSfzFrbAg16U4ukG2_VO56eKRFyPoGmQKpuwiaPPyHiIxk42v_7tnUcWYPdMLQ5RCoNOHVcl95xcigyb54cAC7nBFca5PwqF3xNCXbnMAu3oqN19FsHToUTwEcEEFRszH3I8fepaUlEgwQozOlNxSgMTV3N6q3MXRoBWwTVyGnF1v6o_pwDWoAgsJkK1Cz1dtIkY1YTIkleHC5A" />
+            <span
+              class="absolute top-4 left-4 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">In
+              Stock</span>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline text-xl font-bold mb-2">TechZone Lite</h3>
+            <p class="text-primary font-bold text-2xl mb-4">LKR 180,000</p>
+            <button data-name="TechZone Lite" data-price="180000"
+              class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Add
+              to Cart</button>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-premium grayscale hover:grayscale-0 transition-all duration-300">
+          <div class="h-64 overflow-hidden relative">
+            <img class="w-full h-full object-cover"
+              data-alt="Futuristic large screen smartphone with high-end glass finish and metallic edges"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGLAanLet-nXOMaxSGt5iBlkYIylLvk6JIDZ6sLp0o1V7-7bpdrLhmkGw9YqNhqbbyL3B3S42XkERP-Uy7TKRPDgFlpnCzETtmihAw34GIwdLHcwWEKRYJ6vl_CgR-lD-NsCIq3u50R14iQTS4lW8YNyKOkw_HW8S0WIpkN1qd2wMUhIlt8hKsnvd2IRH18Y26FMx2t6Z-17m7Oge3_aJ1w7Z5q-o4TzlyYHKbkoeUOR_xgHx4hLUZdBzKZdBMzj5_8ydHCX9fou8" />
+            <span
+              class="absolute top-4 left-4 bg-zinc-400 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Out
+              of Stock</span>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline text-xl font-bold mb-2">TechZone Ultra</h3>
+            <p class="text-zinc-400 font-bold text-2xl mb-4">LKR 380,000</p>
+            <button class="w-full py-3 bg-zinc-200 text-zinc-400 rounded-xl font-semibold cursor-not-allowed"
+              disabled="">Notify Me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Laptops Section -->
+  <section class="py-24 bg-surface px-8" id="laptops">
+    <div class="max-w-[1200px] mx-auto">
+      <h2 class="font-headline text-3xl font-bold mb-12">Laptops</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-premium hover:scale-[1.02] transition-all duration-300">
+          <div class="h-64 overflow-hidden relative bg-zinc-100 p-8 flex items-center justify-center">
+            <img class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+              data-alt="Elegant metallic laptop on a minimalist white table with soft focus studio light"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUKTSzFMp4y83zQF65XTyyFEUNIn0M4RKDz2xuq-jn8crFSx1yK8h37CjMKZqcX3pZ2uXMjgQbTLleHnNclNIquSpVXYU8DSYoBtYffrInT62z9rsvmswq5pZ1GgYUJ88DCDbeFBwvYy5isfc4u80YyOX98mkwPHpLHqA-_eEg8GbyY-4Pdj1xtzkjeeBcK2PwzuLBKZ7JtihTsqvrUJI4u0NWS1dC8P3yg8Y5cshNY37nlaqUhQsqVq2_LKKP2VklU5sr0w87n14" />
+            <span
+              class="absolute top-4 left-4 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">In
+              Stock</span>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline text-xl font-bold mb-2">TechZone ZenBook</h3>
+            <p class="text-primary font-bold text-2xl mb-4">LKR 280,000</p>
+            <button data-name="TechZone ZenBook" data-price="280000" class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
+          </div>
+        </div>
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-premium hover:scale-[1.02] transition-all duration-300">
+          <div class="h-64 overflow-hidden relative bg-zinc-100 p-8 flex items-center justify-center">
+            <img class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+              data-alt="Thin lightweight laptop in silver color being opened on a clean white background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC1KYNT_4X_E262ot78pEdkwrCUAJNWlsdtrFgdJDmWEkLbMhMvSMkhT-tcs2SsZ2wo4z97Mut_bRC4WitJ946ZpH6MerJU4M5PDTMGDG8dJLcu4h1K9asmm7h6gB0vEEQuER2WRW4ql9t_ErBrf0GgPq4NIzTih0TbY1-tDjpOjV922Pr3Kn-h1fchlpTFaEns5PKtJv6sJtUqM9XkO2FkNjXo1TONw3Gj7RjUuY1cWNsPWMRAn82QMmHLJZ86K2Ie7yfBDMAih0" />
+            <span
+              class="absolute top-4 left-4 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">In
+              Stock</span>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline text-xl font-bold mb-2">TechZone Air</h3>
+            <p class="text-primary font-bold text-2xl mb-4">LKR 180,000</p>
+            <button data-name="TechZone Air" data-price="180000" class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
+          </div>
+        </div>
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-premium hover:scale-[1.02] transition-all duration-300">
+          <div class="h-64 overflow-hidden relative bg-zinc-100 p-8 flex items-center justify-center">
+            <img class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+              data-alt="Powerful gaming laptop with colorful backlit keyboard on a dark desk with peripherals"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgsq7B_SAsQJKHpTS6cRr7L8o3TNWHHoTwxvP8wjvKmAU0uP6KV9Hbe73A_c0tns7QseJJGykXbQwy_gJJfDUmhFmXmi9IRA4BuAUYkb3t9cCIBtzDIdVFhFL89aPPmgw2vbRowJU7ChvrE_BX8D3a9WJib2Q2IYeY0Do2Cgw-33HhIr9WpQSemRuHX3p7R0J5kjvFEp_Ci80rOnoczrlBxEzQMZKGGjURaJbcKlZPL4SgXDzCyY-YpdkTwSGLO1cSF8MDhm0Ee_U" />
+            <span
+              class="absolute top-4 left-4 bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">In
+              Stock</span>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline text-xl font-bold mb-2">TechZone Gaming</h3>
+            <p class="text-primary font-bold text-2xl mb-4">LKR 380,000</p>
+            <button data-name="TechZone Gaming" data-price="380000" class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Audio Section -->
+  <section class="py-24 bg-surface-container-low px-8" id="audio">
+    <div class="max-w-[1200px] mx-auto">
+      <h2 class="font-headline text-3xl font-bold mb-12">Audio &amp; Headphones</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-surface-container-lowest p-8 rounded-xl shadow-premium hover:translate-y-[-8px] transition-transform duration-300">
+          <img class="w-full h-48 object-contain mb-6"
+            data-alt="Wireless earbuds in their charging case on a minimalist textured surface with bright soft lighting"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfMjMiRKaBPccxailtPFNsfT2UfDwy2hOX90a-SwGOyzC2f_t-A6ZaMOcEsSNcDytwmpK02lRrv5j_Lk8VVlfDvnpEnst8aNaHySl0fnXJJlsy4W26MKQde5W2C6ibZ8AUE5ltqPs4FDzjLFas_YyHmOT-tvp7S0z9CHNxo-r0xRvpsYpCsXDAuT-jpi7VI-zYoG0HT-v2OcVDi8AtMsYKxUUdbjRvtHu6PssQtzpAROivg8nIMQv-LIt0QVVxW6iOj9C3H0tfVyU" />
+          <h3 class="font-headline text-lg font-bold">TechZone Buds</h3>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-xl font-bold text-primary">LKR 28,000</span>
+            <span class="text-xs text-green-600 font-bold uppercase tracking-wider">In Stock</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-lowest p-8 rounded-xl shadow-premium hover:translate-y-[-8px] transition-transform duration-300">
+          <img class="w-full h-48 object-contain mb-6"
+            data-alt="High-quality over-ear headphones in matte black finish against a clean gray background"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ2eFUSy-ff-YcZ3TCpIqnSNJK52lcPi1YXiIfhTMRjNAdY79hGJlhaImCewR9BX58oa_HDjeIawWNWcsHFDnwVp2RNYeiqhYCAtOd8x71JLFBsfQW0NxWKcnQ5n1N341vYXk7IdduRxwb88yshU6aDCw2-3nzznw1Zn38y1XFgb20MNatizaC2ymWUSfG7RfrS_SEneSGZPwnED6WL47a6wc21DFFF9caWNxZWDodn4wP3q3kl7zpbHtmYjf8D4TIACbx85zvlrU" />
+          <h3 class="font-headline text-lg font-bold">TechZone Over-Ear</h3>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-xl font-bold text-primary">LKR 38,000</span>
+            <span class="text-xs text-green-600 font-bold uppercase tracking-wider">In Stock</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-premium opacity-60">
+          <img class="w-full h-48 object-contain mb-6"
+            data-alt="Professional grade studio monitor headphones on a stand in a recording studio setting"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBq2Wja5VFTX2dMX_1ZUMg0ZQXYTn-jphczxe83Y7YLo84ajGwksfRUPv3udMBKYYoBm3nPX_44pWuxrNLbdvfX55W6bG91GanCho8ndf5gmU4yigzupZCXhTKzRNz8n0EvPRf4nCl0n9co81-BuwjIajhS_f5GLdYNtcoE-X8fiVBj325R5foY3smI5OFS56AQ_XPql-tXu_zU9cEKj37DVTn0T1kqdnPnYHdgm7M-I8U-s2dY_Oy6k9T9FVJAVhvOwZVV1n3P80" />
+          <h3 class="font-headline text-lg font-bold">TechZone Pro</h3>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-xl font-bold text-zinc-400">LKR 48,000</span>
+            <span class="text-xs text-zinc-400 font-bold uppercase tracking-wider">Out of Stock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Special Offers Section -->
+  <section class="py-24 bg-zinc-950 text-white px-8">
+    <div class="max-w-[1200px] mx-auto">
+      <h2 class="font-headline text-4xl font-extrabold mb-12 text-center tracking-tight">Special Offers</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="relative overflow-hidden rounded-2xl h-80 flex items-center bg-zinc-900 group">
+          <div class="absolute inset-0">
+            <img class="w-full h-full object-cover opacity-40 transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Abstract music visualization with vibrant blue light trails and high-end headphone silhouette"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO6aW2683BU2-eG3hD2JrRG54w1aKXOGK14Oum1INjx-Tq707fmRg1uKMkHlrWdBpw1-CAdQ1EfQ4BjVcEK427p4pt8a2k9TbViQ6Lp7VhHQ-Hsw-iPjeAaBoew3orVHsFIK0l5F3nWNVjOXOk7X9_exaKb96isWD6RvA2l35Xcc72-wzQJjJwyD8B8_CKx0Vpu3ZSPj6OCKEnBA-Ihp5IqnMNegnu4-iAdLAJ2QA6D0sj8uzUnVhxgFKnWlgrQaARltxLlSnoUPo" />
+            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 to-transparent"></div>
+          </div>
+          <div class="relative z-10 p-12 max-w-sm">
+            <span class="text-primary-container font-bold text-sm tracking-widest uppercase mb-4 block">Limited
+              Time</span>
+            <h3 class="font-headline text-4xl font-bold mb-4">20% OFF Headphones</h3>
+            <p class="text-zinc-400 mb-6">Experience crystal clear sound for less. Use code: AUDIO20</p>
+            <a class="inline-block text-primary-container font-bold border-b-2 border-primary-container pb-1 hover:text-white hover:border-white transition-all"
+              href="#">Claim Offer</a>
+          </div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl h-80 flex items-center bg-zinc-900 group">
+          <div class="absolute inset-0">
+            <img class="w-full h-full object-cover opacity-40 transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Workspace with laptop and smartwatch neatly arranged on a felt desk mat with modern office aesthetic"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVeRWpb1dnXvZRQ8ZWeyIydkQkoO47-uCn0XNbemf_YZbLZGVmtyGzEQwhfehbidrrhI86rIjwrZYe8ctvH-tZKKbIDkSceo6BOO_dQkFVXzg_nz0_taw5XEMoN0II-indBxPIh8sJHdTvJwJvXHa6gJoameTWA39_wh_YhNdrgfgSj5mZwhvaEzxTPgoAVM3G4FZvj3xNGimrlxoJlzT-Zov3r2jHo9imbauB6OkHj6Cd-uoTrQNlnCverfbyTq6Vs7OGEznQUX0" />
+            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 to-transparent"></div>
+          </div>
+          <div class="relative z-10 p-12 max-w-sm">
+            <span class="text-primary-container font-bold text-sm tracking-widest uppercase mb-4 block">Bundle
+              Deal</span>
+            <h3 class="font-headline text-4xl font-bold mb-4">Free Smartwatch with Laptop</h3>
+            <p class="text-zinc-400 mb-6">Complete your ecosystem. Get a free TechZone Band with any laptop purchase.
+            </p>
+            <a class="inline-block text-primary-container font-bold border-b-2 border-primary-container pb-1 hover:text-white hover:border-white transition-all"
+              href="#">Shop Bundles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Wearables & Gaming Grid -->
+  <section class="py-24 bg-surface px-8" id="wearables">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Wearables -->
+        <div>
+          <h2 class="font-headline text-3xl font-bold mb-8">Wearables</h2>
+          <div class="space-y-4">
+            <div
+              class="flex items-center gap-6 p-4 rounded-xl bg-surface-container-low hover:bg-white transition-colors duration-300">
+              <div class="w-24 h-24 bg-zinc-100 rounded-lg p-2">
+                <img class="w-full h-full object-contain"
+                  data-alt="Minimalist silver smartwatch with white band shown in profile"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvelY65exgFTb0j3Yvf3R1VGUklVRzfJJXIMHM-WRAScS8mO0hYa5S25C08PXubrLBr456O4scwf_oVRInvIHX7kVmcSmiczHs_ljNPmiBVyQhlxNrLQ-MwLvcQdZ3oAAFTQ03p4OX0jw5CozSlAsHfI9zAxFd1kRHEQO_FNZEzOZ1kCnahntR-p3S-P99q6B2wGi84tF8SVLpci9EYpqITP6QZJDp3bP8X_lQmNGG55bxxvgUauzb8uYN5-oNwc35kr3KWR2HAas" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-bold">TechZone Watch</h4>
+                <p class="text-sm text-on-surface-variant">LKR 28,000</p>
+              </div>
+              <span class="material-symbols-outlined text-primary cursor-pointer">add_circle</span>
+            </div>
+            <div
+              class="flex items-center gap-6 p-4 rounded-xl bg-surface-container-low hover:bg-white transition-colors duration-300">
+              <div class="w-24 h-24 bg-zinc-100 rounded-lg p-2">
+                <img class="w-full h-full object-contain"
+                  data-alt="Slim fitness tracker band in black with glowing heart rate monitor sensors"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmMLjahCYQFihWbeE9T-QCBhOiE7fac9jYynUNkq_SKRIJ2y2z3IOgrvjBKRjxvo_rL3XZfVE6OYIwXdTLtQeAj2nKVAkS9Yf4M-r4erQR1wDCktiaYfktAEGVVTBJdhj_fkVw9z5tZsz_Ictx55LKNsuuQKuXU1Uab0BJyFyeIXneuP_dt-9sFfcLqbAsqo6q-yQCiZRC5hhGrCOH78MZyfoBl8xDcVgfojv5vNaMO-yCiMqt1f2KFiPGuC3kbUn3-BugmP_Xb5Y" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-bold">TechZone Band</h4>
+                <p class="text-sm text-on-surface-variant">LKR 18,000</p>
+              </div>
+              <span class="material-symbols-outlined text-primary cursor-pointer">add_circle</span>
+            </div>
+            <div
+              class="flex items-center gap-6 p-4 rounded-xl bg-surface-container-low hover:bg-white transition-colors duration-300">
+              <div class="w-24 h-24 bg-zinc-100 rounded-lg p-2">
+                <img class="w-full h-full object-contain"
+                  data-alt="Rugged outdoor smartwatch with high durability chassis and orange tactical strap"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCghJsVBjgBLHh5UfAW3sRXpoCfHfwBN1HZERiUDaTS6_RGLwlm2eT8P7vpg2-bdRPBtsN0VUIaXILdRSyDf0JRjSW_ivFWRS3FDPkWdDbDkSZ8Ino4Orr0p2i0yj2hcS3emhEflkJxX4xhwFzqwfZ6RDao7HGcFDDgKF__oqScyoJpK445ZgzdVgYHgc8Bg8ObdrPaS0N0faKnWEgl956i5gxHjM7DOtNAEeJlEf-QMQgUeuwIjD8uq7ZtVs-l_HnlyeUUPnSWcD8" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-bold">TechZone Watch Ultra</h4>
+                <p class="text-sm text-on-surface-variant">LKR 48,000</p>
+              </div>
+              <span class="material-symbols-outlined text-primary cursor-pointer">add_circle</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gaming -->
+        <div id="gaming" class="scroll-mt-24">
+          <h2 class="font-headline text-3xl font-bold mb-8">Gaming</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-6 bg-surface-container-low rounded-xl group relative overflow-hidden">
+              <h4 class="font-bold mb-1">TechZone Controller</h4>
+              <p class="text-sm text-primary font-bold">LKR 16,000</p>
+              <img class="mt-4 w-full h-32 object-contain group-hover:scale-110 transition-transform duration-300"
+                data-alt="Next-gen gaming controller with ergonomic grip and blue LED indicators"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS7jThajizDndnuekRymYZ9DgN5yN-5v8cV9fP9X8TCHuo1gfhKyK3PBKYFnbpOHs5M5Lxr9KD3QqmdLh2xzuy595uIUsCYGKeFwrbJQnyzoFG0zazBflSglPGkqgtFLBYdY2kU0ZvVeCr9iFcXzJokO13MCq1rIZ5uMFNl2ht2i4bkocvMCR9tsYQ72gVUKjiGo-wtojNSF5bherny2iZ2LB3V0xTj5VhOpud2I91t7R_zX0L9REW1L5idMDOPgN_wisL8GC0aYQ" />
+            </div>
+            <div class="p-6 bg-surface-container-low rounded-xl group relative overflow-hidden">
+              <h4 class="font-bold mb-1">TechZone Keyboard</h4>
+              <p class="text-sm text-primary font-bold">LKR 26,000</p>
+              <img class="mt-4 w-full h-32 object-contain group-hover:scale-110 transition-transform duration-300"
+                data-alt="High performance mechanical gaming keyboard with customizable backlit keys"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsqzrFMLdB6lgd969sAHquG1uDXgf8VTY_gaNPwkh-vE5PFxG11BOutwF-0z6JLdfmBz1Y2jA9VRQccqzujLvVpZJsZPysvPrFsjgZ6C12u1AH8ePbxNu2VuzZHpziJiPl8JezJy0ECquFqH3ErSyleQueb8EO8oRZv-zPAYPTU-Vrc0EkWJLsAgoFjYEvgPovHuuE_G9E4EDWV0YtulmtkOXpMLZiBal8M-t1sXQMzFfgquHMzKn06eshqOwAesBucNy2behk4bY" />
+            </div>
+            <div class="p-6 bg-surface-container-low rounded-xl group relative overflow-hidden sm:col-span-2">
+              <div class="flex justify-between items-center">
+                <div>
+                  <h4 class="font-bold mb-1">TechZone Mouse</h4>
+                  <p class="text-sm text-primary font-bold">LKR 12,000</p>
+                </div>
+                <img class="w-32 h-20 object-contain group-hover:rotate-12 transition-transform duration-300"
+                  data-alt="Professional lightweight gaming mouse with high-precision optical sensor"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ8TxHuaKrMGmwebP1bCSxBtPJMWFS013_VXC43w9SQZxlx-AIo49AkSk2dcpNS5ullUHE97-6COnbNOWiou42AVnLGqLc1QnAkcqxpwwp3mrnz9-ZOj2XGAKSJ425hYL2_yKz2pmD9vym5Mt2JU5pzA3VxAW4w79ZyJ7-hgRYFy_d5aO8jI4xFW7aLP7Akhyn-iMAAh8lNCQ_EwV9hCqTTPSM5GbXWFBXNyZPEQpmVP1X_GBlieyaqs_NUxvP8LkNHyjX3O18Vzg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- New Arrivals Section (Bento Inspired) -->
+  <section class="py-24 bg-surface-container-low px-8 overflow-hidden">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="font-headline text-4xl font-extrabold tracking-tight">New Arrivals</h2>
+        <div class="h-0.5 flex-1 bg-surface-container-highest mx-8 hidden md:block"></div>
+        <button class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">View All <span
+            class="material-symbols-outlined">arrow_forward</span></button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div
+          class="md:col-span-2 md:row-span-2 bg-white rounded-2xl p-10 flex flex-col justify-between shadow-premium group">
+          <div>
+            <span
+              class="bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">NEW</span>
+            <h3 class="font-headline text-3xl font-bold mb-4">TechZone X Pro 2</h3>
+            <p class="text-on-surface-variant max-w-xs">The next leap in mobile photography and processing power.
+              Available now.</p>
+          </div>
+          <img class="w-full h-64 object-contain mt-8 group-hover:scale-105 transition-transform duration-700"
+            data-alt="Dramatic top-down shot of a new flagship smartphone model showing its refined camera array"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ipXtsqqUzqOarqEv2OhQpThCDN8Gb7f82bZ1l-98FpGad6FFwxnO-DtmrNgf4JPDxL6I1-yVnNkYcL7xFCJbfdps7NjOJw_CtFpe8_vgxek6_eYXRbyAZFNC9tipZoyeclZRaXCATi31icZ1MXZsc-dQhrfHIA0ZVpje837q24UOBC_ATThzhwxHRt44np6jrO_nrS6huri9xKFyK1tN1SFDx7vpNSkQLVWHN9M10Z05sy78EGAbjr11E8kDYtY3Ka4jYwE-POA" />
+        </div>
+        <div
+          class="md:col-span-2 bg-primary text-white rounded-2xl p-8 flex items-center shadow-premium relative overflow-hidden group">
+          <div class="relative z-10">
+            <span
+              class="bg-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">NEW</span>
+            <h3 class="font-headline text-2xl font-bold mb-2">Buds Air Pro</h3>
+            <p class="text-white/80 mb-4">Spatial audio like never before.</p>
+            <button class="px-6 py-2 bg-white text-primary rounded-lg font-bold text-sm">Pre-Order</button>
+          </div>
+          <img
+            class="absolute -right-10 top-0 w-64 h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity"
+            data-alt="Close up view of white wireless earbuds in high detail on a blue studio background"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD0lFMWLXVTzOkMkTua12LkBFz6oEc3V4-iMnyifkyvPChRQaI5VGo24BL3zzABh2GKqDil4Pdl2wTFl6uapvuQvvfGAlaNZT2_C-6rsicGtvpIw01u45uwRKGeiN4Wj7E0xA0EGoP-KOr0xhdf_XL0iGIJNEXP8IsvDqN3ZL6dr7jkBny33cIYWbqmktFpS3N_AE3uPSRLExJmvHDegMZ00zQZCrEafcKQ8ZO5AYnn5XsY9IXmyTcYfKvhibvK5r1_O28fRsTAEg" />
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-premium">
+          <span
+            class="bg-zinc-100 text-zinc-900 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase mb-2 inline-block">NEW</span>
+          <h4 class="font-bold text-sm">Ultra Charger</h4>
+          <img class="w-full h-32 object-contain my-4"
+            data-alt="High speed USB-C charger block in a professional packaging style with clean lighting"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzZZ4F2QAIb6NwIBHVPZD5iHLPfoXGu22-hq0bXIBGSLbnYn8tvhkOZ1DVcSWpnPYH6mKdmICdiO0JICVyerj8ge5IkY1SFtP0frfca8CImHmYI7US_QNy3ZKQjOQKTxaO1PQSPWmJTRUAA9p3o58yZZvIOSJ1O0dI2DT7uN_SGq6UX1Qu6h4Fj2T4AY0rJrvcTESSuN7NdilS9pDOjj3ypAM_Xqdc7gpx5Le5fW-zoRoT1tb9m7IqobnKllrIwNBTQnWBWLcYEJM" />
+          <p class="text-primary font-bold text-sm">LKR 12,000</p>
+        </div>
+        <div class="bg-zinc-900 text-white rounded-2xl p-6 shadow-premium">
+          <span
+            class="bg-white/10 text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase mb-2 inline-block">NEW</span>
+          <h4 class="font-bold text-sm">Pro Stand</h4>
+          <img class="w-full h-32 object-contain my-4 brightness-125"
+            data-alt="Aluminum laptop stand with minimalist design on a high-end wooden desk"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcxz2Hos5jQ-VSanRwvlU0FVw8W2dz6hL67PJvl8F7kIM5Zqen0Ol_GSgGhg6eFcQ-6RUCBVDOxXFi2tLByWu-ia2wibE3fZeUo9aiOzRDU1kgupYyjuMfSvk47MjmS0rFqLoPTigmZslp1oaofKismhhMjdFkfOag9lmzVrqt5mmEKQYTNBBtckgytULX2Y38-dvXaoQbIyQGZP7q6_VsH86ljGbBwDeGxqhu3tNt_IPz8q64trY7zIUTRbSr1rhz1mieJtzChE" />
+          <p class="text-primary-container font-bold text-sm">LKR 18,000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-zinc-900 dark:bg-black w-full pt-20 pb-10">
+    <div class="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 font-plus-jakarta-sans">
+      <div class="space-y-6">
+        <div class="text-xl font-bold text-white">TechZone</div>
+        <p class="text-zinc-500 text-sm leading-relaxed">Pioneering the future of consumer technology with a commitment
+          to design, power, and connectivity.</p>
+        <div class="flex space-x-4">
+          <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors duration-300"
+            href="#">
+            <span class="material-symbols-outlined text-sm">share</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6">Shop</h4>
+        <ul class="space-y-4 text-zinc-500 text-sm">
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Smartphones</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Laptops</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Audio</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Wearables</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Gaming</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6">Support</h4>
+        <ul class="space-y-4 text-zinc-500 text-sm">
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Contact Us</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Privacy Policy</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Shipping Info</a></li>
+          <li><a class="hover:text-zinc-200 transition-all" href="#">Returns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6">Newsletter</h4>
+        <p class="text-zinc-500 text-sm mb-4">Join the TechZone community for exclusive updates.</p>
+        <form class="flex">
+          <input
+            class="bg-white/5 border-none rounded-l-lg text-white text-sm focus:ring-1 focus:ring-primary w-full h-12"
+            placeholder="Email address" type="email" />
+          <button
+            class="bg-primary px-4 rounded-r-lg h-12 flex items-center justify-center hover:bg-primary-container transition-colors">
+            <span class="material-symbols-outlined text-white">chevron_right</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="max-w-[1200px] mx-auto px-8 mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-zinc-500 text-xs">© 2024 TechZone. All rights reserved.</p>
+      <div class="flex space-x-6 text-zinc-500 text-xs">
+        <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+        <a class="hover:text-white transition-colors" href="#">Accessibility</a>
+        <a class="hover:text-white transition-colors" href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== SEARCH OVERLAY ===== -->
+  <div id="search-overlay" class="fixed inset-0 z-[200] flex flex-col items-center justify-start pt-24 px-6 transition-all duration-300 opacity-0 pointer-events-none bg-white/95 dark:bg-[#0a0a14]/96 backdrop-blur-md">
+    <div class="w-full max-w-2xl">
+      <div class="flex items-center gap-4 border-b-2 border-cyan-500 dark:border-cyan-400 pb-3">
+        <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400 text-3xl">search</span>
+        <input id="search-input" type="text" placeholder="Search products, categories…" class="flex-1 bg-transparent text-zinc-900 dark:text-white text-2xl outline-none placeholder-zinc-400 dark:placeholder-zinc-500 font-headline" />
+        <button id="search-close" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+      </div>
+      <div id="search-results" class="mt-8 space-y-3 max-h-[60vh] overflow-y-auto"></div>
+      <p id="search-hint" class="mt-6 text-zinc-500 text-sm text-center">Type to search across all products</p>
+    </div>
+  </div>
+
+  <!-- ===== CART SIDEBAR ===== -->
+  <div id="cart-overlay" class="fixed inset-0 z-[180] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md z-[190] flex flex-col transition-transform duration-400 translate-x-full bg-white/95 dark:bg-[#080812]/97 border-l border-zinc-200 dark:border-cyan-400/20 backdrop-blur-xl">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200 dark:border-cyan-400/20">
+      <h2 class="text-zinc-900 dark:text-white font-headline text-xl font-bold flex items-center gap-2">
+        <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400">shopping_cart</span> Your Cart
+      </h2>
+      <button id="cart-close" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+      <p id="cart-empty" class="text-zinc-500 text-center mt-16">Your cart is empty.</p>
+    </div>
+    <div class="px-6 py-5 border-t border-zinc-200 dark:border-cyan-400/20">
+      <div class="flex justify-between text-zinc-900 dark:text-white font-bold text-lg mb-4">
+        <span>Total</span><span id="cart-total">LKR 0</span>
+      </div>
+      <button class="w-full py-3 rounded-xl font-bold text-white dark:text-black text-base transition-all duration-300 hover:scale-105 bg-cyan-600 dark:bg-[linear-gradient(135deg,#00ffff,#0066ff)] shadow-lg dark:shadow-[0_0_20px_rgba(0,255,255,0.3)]">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- ===== PROFILE PANEL ===== -->
+  <div id="profile-overlay" class="fixed inset-0 z-[180] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="profile-sidebar" class="fixed top-0 right-0 h-full w-full max-w-sm z-[190] flex flex-col transition-transform duration-400 translate-x-full bg-white/95 dark:bg-[#080812]/97 border-l border-zinc-200 dark:border-purple-500/20 backdrop-blur-xl">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200 dark:border-purple-500/20">
+      <h2 class="text-zinc-900 dark:text-white font-headline text-xl font-bold">My Profile</h2>
+      <button id="profile-close" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+
+      <!-- LOGGED OUT STATE (Forms) -->
+      <div id="profile-logged-out">
+        <!-- Login Section -->
+        <div class="mb-8">
+          <h3 class="text-zinc-900 dark:text-white font-headline text-2xl font-bold mb-4">Login</h3>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Username or email address <span class="text-red-500">*</span></label>
+              <input type="text" class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Password <span class="text-red-500">*</span></label>
+              <div class="relative">
+                <input type="password" class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
+                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500 cursor-pointer hover:text-zinc-900 dark:hover:text-white">visibility_off</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="remember" class="rounded bg-zinc-50 dark:bg-white/5 border-zinc-300 dark:border-white/10 text-cyan-600 dark:text-cyan-400 focus:ring-cyan-500 dark:focus:ring-cyan-400" />
+              <label for="remember" class="text-sm text-zinc-600 dark:text-zinc-400 font-medium">Remember me</label>
+            </div>
+            <button type="button" id="demo-login-btn" class="w-full py-3 rounded-xl font-bold text-white dark:text-black text-base transition-all duration-300 hover:scale-105 bg-cyan-600 dark:bg-[linear-gradient(135deg,#00ffff,#0066ff)] shadow-lg dark:shadow-[0_0_20px_rgba(0,255,255,0.3)]">Log in</button>
+            <div class="pt-2">
+              <a href="#" class="text-sm text-cyan-600 dark:text-cyan-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Lost your password?</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="border-t border-zinc-200 dark:border-white/10 my-8"></div>
+
+        <!-- Register Section -->
+        <div>
+          <h3 class="text-zinc-900 dark:text-white font-headline text-2xl font-bold mb-4">Register</h3>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Email address <span class="text-red-500">*</span></label>
+              <input type="email" class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed pt-2">
+              A link to set a new password will be sent to your email address.
+            </p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+              Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#" class="text-cyan-600 dark:text-cyan-400 hover:underline">privacy policy</a>.
+            </p>
+            <button type="button" class="w-full py-3 rounded-xl font-bold text-zinc-800 dark:text-white text-base transition-all duration-300 hover:scale-105 mt-2 bg-zinc-200 dark:bg-white/10 border border-zinc-300 dark:border-white/20">Register</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- LOGGED IN STATE (Dashboard) -->
+      <div id="profile-logged-in" class="hidden">
+        <!-- Avatar & identity -->
+        <div class="flex flex-col items-center gap-3 pb-8 border-b border-zinc-200 dark:border-white/10">
+          <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl font-bold text-black" style="background:linear-gradient(135deg,#00ffff,#b000ff)">T</div>
+          <div class="text-center mt-2">
+            <p class="text-zinc-900 dark:text-white font-bold text-xl leading-tight">TechZone Member</p>
+            <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-1">member@techzone.lk</p>
+          </div>
+          <span class="px-4 py-1.5 rounded-full text-xs font-bold text-white dark:text-black mt-2 bg-cyan-600 dark:bg-[linear-gradient(90deg,#00ffff,#0066ff)]">Premium Member</span>
+        </div>
+
+        <!-- Nav links -->
+        <nav class="space-y-4 pt-6">
+          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">receipt_long</span>
+            <span class="text-lg font-medium">My Orders</span>
+          </a>
+          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">favorite</span>
+            <span class="text-lg font-medium">Wishlist</span>
+          </a>
+          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">local_shipping</span>
+            <span class="text-lg font-medium">Track Order</span>
+          </a>
+          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">settings</span>
+            <span class="text-lg font-medium">Account Settings</span>
+          </a>
+        </nav>
+
+        <!-- Sign out -->
+        <div class="pt-10">
+          <button type="button" id="demo-logout-btn" class="w-full py-4 rounded-xl border border-zinc-200 dark:border-white/10 font-semibold text-base text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-50 dark:bg-[rgba(255,255,255,0.02)] transition-all">Sign Out</button>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <script>
+    // ── Theme toggle ──────────────────────────────────────────
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleIcon = document.getElementById('theme-toggle-icon');
+    const html = document.documentElement;
+    themeToggleBtn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      themeToggleIcon.textContent = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    });
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.classList.add('dark');
+      themeToggleIcon.textContent = 'light_mode';
+    }
+
+    // ── Cart state ────────────────────────────────────────────
+    let cart = [];
+
+    function fmt(n) { return 'LKR ' + n.toLocaleString(); }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cart-badge');
+      const total = cart.reduce((s, i) => s + i.qty, 0);
+      badge.textContent = total;
+      badge.classList.toggle('hidden', total === 0);
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const empty = document.getElementById('cart-empty');
+      const totalEl = document.getElementById('cart-total');
+      if (cart.length === 0) {
+        empty.style.display = '';
+        container.querySelectorAll('.cart-item').forEach(el => el.remove());
+        totalEl.textContent = 'LKR 0';
+        return;
+      }
+      empty.style.display = 'none';
+      container.querySelectorAll('.cart-item').forEach(el => el.remove());
+      let total = 0;
+      cart.forEach((item, idx) => {
+        total += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item flex items-center gap-4 p-4 rounded-xl transition-colors border bg-zinc-50 border-zinc-200 dark:bg-white/5 dark:border-cyan-400/20';
+        div.innerHTML = `
+          <div class="flex-1">
+            <p class="text-zinc-900 dark:text-white font-semibold text-sm">${item.name}</p>
+            <p class="text-cyan-600 dark:text-cyan-400 text-sm font-bold">${fmt(item.price)}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="qty-btn text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white w-7 h-7 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-white/5" data-idx="${idx}" data-delta="-1">&#8722;</button>
+            <span class="text-zinc-900 dark:text-white font-bold w-5 text-center">${item.qty}</span>
+            <button class="qty-btn text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white w-7 h-7 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-white/5" data-idx="${idx}" data-delta="1">+</button>
+          </div>
+          <button class="remove-btn text-zinc-400 hover:text-red-500 dark:text-zinc-500 dark:hover:text-red-400 transition-colors" data-idx="${idx}">
+            <span class="material-symbols-outlined text-base">delete</span>
+          </button>`;
+        container.appendChild(div);
+      });
+      totalEl.textContent = fmt(total);
+      container.querySelectorAll('.qty-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = +btn.dataset.idx, d = +btn.dataset.delta;
+          cart[i].qty = Math.max(1, cart[i].qty + d);
+          renderCart(); updateCartBadge();
+        });
+      });
+      container.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          cart.splice(+btn.dataset.idx, 1);
+          renderCart(); updateCartBadge();
+        });
+      });
+    }
+
+    function addToCart(name, price) {
+      const found = cart.find(i => i.name === name);
+      if (found) found.qty++;
+      else cart.push({ name, price, qty: 1 });
+      renderCart(); updateCartBadge();
+    }
+
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        addToCart(btn.dataset.name, +btn.dataset.price);
+        openCart();
+      });
+    });
+
+    // Wearable add_circle icons
+    const wearables = [
+      { name: 'TechZone Watch', price: 28000 },
+      { name: 'TechZone Band', price: 18000 },
+      { name: 'TechZone Watch Ultra', price: 48000 }
+    ];
+    document.querySelectorAll('.material-symbols-outlined.text-primary.cursor-pointer').forEach((btn, i) => {
+      if (wearables[i]) btn.addEventListener('click', () => { addToCart(wearables[i].name, wearables[i].price); openCart(); });
+    });
+
+    // ── Cart open/close ───────────────────────────────────────
+    function openCart() {
+      document.getElementById('cart-sidebar').style.transform = 'translateX(0)';
+      document.getElementById('cart-overlay').classList.remove('opacity-0','pointer-events-none');
+    }
+    function closeCart() {
+      document.getElementById('cart-sidebar').style.transform = 'translateX(100%)';
+      document.getElementById('cart-overlay').classList.add('opacity-0','pointer-events-none');
+    }
+    document.getElementById('cart-btn').addEventListener('click', openCart);
+    document.getElementById('cart-close').addEventListener('click', closeCart);
+    document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+    // ── Profile open/close ────────────────────────────────────
+    function openProfile() {
+      document.getElementById('profile-sidebar').style.transform = 'translateX(0)';
+      document.getElementById('profile-overlay').classList.remove('opacity-0','pointer-events-none');
+    }
+    function closeProfile() {
+      document.getElementById('profile-sidebar').style.transform = 'translateX(100%)';
+      document.getElementById('profile-overlay').classList.add('opacity-0','pointer-events-none');
+    }
+    document.getElementById('profile-btn').addEventListener('click', openProfile);
+    document.getElementById('profile-close').addEventListener('click', closeProfile);
+    document.getElementById('profile-overlay').addEventListener('click', closeProfile);
+
+    // ── Search overlay ────────────────────────────────────────
+    const allProducts = [
+      { name:'TechZone X Pro', price:280000, cat:'Smartphones' },
+      { name:'TechZone Lite', price:180000, cat:'Smartphones' },
+      { name:'TechZone Ultra', price:380000, cat:'Smartphones', oos:true },
+      { name:'TechZone ZenBook', price:280000, cat:'Laptops' },
+      { name:'TechZone Air', price:180000, cat:'Laptops' },
+      { name:'TechZone Gaming Laptop', price:380000, cat:'Laptops' },
+      { name:'TechZone Buds', price:28000, cat:'Audio' },
+      { name:'TechZone Over-Ear', price:38000, cat:'Audio' },
+      { name:'TechZone Pro Headphones', price:48000, cat:'Audio', oos:true },
+      { name:'TechZone Watch', price:28000, cat:'Wearables' },
+      { name:'TechZone Band', price:18000, cat:'Wearables' },
+      { name:'TechZone Watch Ultra', price:48000, cat:'Wearables' },
+      { name:'TechZone Controller', price:16000, cat:'Gaming' },
+      { name:'TechZone Keyboard', price:26000, cat:'Gaming' },
+      { name:'TechZone Mouse', price:12000, cat:'Gaming' },
+      { name:'TechZone X Pro 2', price:0, cat:'New Arrivals' },
+      { name:'Buds Air Pro', price:0, cat:'New Arrivals' },
+      { name:'Ultra Charger', price:12000, cat:'New Arrivals' },
+      { name:'Pro Stand', price:18000, cat:'New Arrivals' },
+    ];
+
+    function openSearch() {
+      const ov = document.getElementById('search-overlay');
+      ov.classList.remove('opacity-0','pointer-events-none');
+      document.getElementById('search-input').focus();
+      document.getElementById('search-results').innerHTML = '';
+      document.getElementById('search-hint').style.display = '';
+    }
+    function closeSearch() {
+      const ov = document.getElementById('search-overlay');
+      ov.classList.add('opacity-0','pointer-events-none');
+      document.getElementById('search-input').value = '';
+    }
+    document.getElementById('search-btn').addEventListener('click', openSearch);
+    document.getElementById('search-close').addEventListener('click', closeSearch);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSearch(); closeCart(); closeProfile(); } });
+
+    document.getElementById('search-input').addEventListener('input', function() {
+      const q = this.value.trim().toLowerCase();
+      const results = document.getElementById('search-results');
+      const hint = document.getElementById('search-hint');
+      if (!q) { results.innerHTML = ''; hint.style.display = ''; return; }
+      hint.style.display = 'none';
+      const matches = allProducts.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+      if (matches.length === 0) {
+        results.innerHTML = '<p class="text-zinc-500 text-center">No products found.</p>';
+        return;
+      }
+      results.innerHTML = matches.map(p => `
+        <div class="flex items-center justify-between px-5 py-4 rounded-xl cursor-pointer transition-all border bg-zinc-50 border-zinc-200 hover:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:hover:border-cyan-400/40" onclick="${p.oos ? '' : `addToCart('${p.name}',${p.price});closeSearch();openCart();`}">
+          <div>
+            <p class="text-zinc-900 dark:text-white font-semibold">${p.name}</p>
+            <p class="text-zinc-500 text-xs">${p.cat}</p>
+          </div>
+          <div class="text-right">
+            <p class="text-cyan-600 dark:text-cyan-400 font-bold text-sm">${p.price ? fmt(p.price) : 'Coming Soon'}</p>
+            ${!p.oos && p.price ? '<p class="text-zinc-500 dark:text-zinc-600 text-xs mt-1">Click to add to cart</p>' : ''}
+          </div>
+        </div>`).join('');
+    });
+
+    // ── Profile toggle logic ──────────────────────────────
+    document.getElementById('demo-login-btn').addEventListener('click', () => {
+      document.getElementById('profile-logged-out').classList.add('hidden');
+      document.getElementById('profile-logged-in').classList.remove('hidden');
+    });
+
+    document.getElementById('demo-logout-btn').addEventListener('click', () => {
+      document.getElementById('profile-logged-in').classList.add('hidden');
+      document.getElementById('profile-logged-out').classList.remove('hidden');
+    });
+  </script>
+</body>
+
+</html>
