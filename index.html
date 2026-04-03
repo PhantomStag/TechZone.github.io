@@ -429,30 +429,42 @@
 
     /* ── Scrolling Ticker ── */
     @keyframes ticker-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
+
     .ticker-track {
       display: flex;
       width: max-content;
       animation: ticker-scroll 28s linear infinite;
     }
-    .ticker-track:hover { animation-play-state: paused; }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
     .ticker-wrap {
       overflow: hidden;
       white-space: nowrap;
       background: linear-gradient(90deg, #f1f5f9 0%, #ffffff 50%, #f1f5f9 100%);
-      border-top: 1px solid rgba(0,0,0,0.05);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       padding: 24px 0;
       position: relative;
       z-index: 49;
     }
+
     .dark .ticker-wrap {
       background: linear-gradient(90deg, #1a0036 0%, #000d1a 50%, #1a0036 100%);
-      border-top: 1px solid rgba(0,255,255,0.15);
-      border-bottom: 1px solid rgba(0,255,255,0.15);
+      border-top: 1px solid rgba(0, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.15);
     }
+
     .dark .ticker-wrap {
       background: linear-gradient(90deg, #07002a 0%, #000812 50%, #07002a 100%);
     }
@@ -546,7 +558,8 @@
         </button>
         <button id="cart-btn" class="hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 relative">
           <span class="material-symbols-outlined">shopping_cart</span>
-          <span id="cart-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+          <span id="cart-badge"
+            class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
         </button>
         <button id="profile-btn" class="hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">
           <span class="material-symbols-outlined">person</span>
@@ -586,7 +599,8 @@
 
   <!-- Scrolling Ticker -->
   <div class="ticker-wrap" aria-hidden="true">
-    <div class="ticker-track text-xl font-bold tracking-widest uppercase md:text-2xl py-1 text-zinc-800 dark:text-transparent">
+    <div
+      class="ticker-track text-xl font-bold tracking-widest uppercase md:text-2xl py-1 text-zinc-800 dark:text-transparent">
       <!-- duplicate the set so scroll loops seamlessly -->
       <span class="mx-8 text-cyan-600 dark:text-cyan-400">&#9670; #1 IN ASIA</span>
       <span class="mx-8 text-purple-600 dark:text-purple-400">BEST SMARTPHONE RETAILER</span>
@@ -753,7 +767,8 @@
           <div class="p-8">
             <h3 class="font-headline text-xl font-bold mb-2">TechZone ZenBook</h3>
             <p class="text-primary font-bold text-2xl mb-4">LKR 280,000</p>
-            <button data-name="TechZone ZenBook" data-price="280000" class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
+            <button data-name="TechZone ZenBook" data-price="280000"
+              class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
           </div>
         </div>
         <div
@@ -769,7 +784,8 @@
           <div class="p-8">
             <h3 class="font-headline text-xl font-bold mb-2">TechZone Air</h3>
             <p class="text-primary font-bold text-2xl mb-4">LKR 180,000</p>
-            <button data-name="TechZone Air" data-price="180000" class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
+            <button data-name="TechZone Air" data-price="180000"
+              class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
           </div>
         </div>
         <div
@@ -785,7 +801,8 @@
           <div class="p-8">
             <h3 class="font-headline text-xl font-bold mb-2">TechZone Gaming</h3>
             <p class="text-primary font-bold text-2xl mb-4">LKR 380,000</p>
-            <button data-name="TechZone Gaming" data-price="380000" class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
+            <button data-name="TechZone Gaming" data-price="380000"
+              class="add-to-cart w-full py-3 bg-zinc-900 text-white rounded-xl font-semibold">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -1071,12 +1088,15 @@
     </div>
   </footer>
   <!-- ===== SEARCH OVERLAY ===== -->
-  <div id="search-overlay" class="fixed inset-0 z-[200] flex flex-col items-center justify-start pt-24 px-6 transition-all duration-300 opacity-0 pointer-events-none bg-white/95 dark:bg-[#0a0a14]/96 backdrop-blur-md">
+  <div id="search-overlay"
+    class="fixed inset-0 z-[200] flex flex-col items-center justify-start pt-24 px-6 transition-all duration-300 opacity-0 pointer-events-none bg-white/95 dark:bg-[#0a0a14]/95 backdrop-blur-md">
     <div class="w-full max-w-2xl">
       <div class="flex items-center gap-4 border-b-2 border-cyan-500 dark:border-cyan-400 pb-3">
         <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400 text-3xl">search</span>
-        <input id="search-input" type="text" placeholder="Search products, categories…" class="flex-1 bg-transparent text-zinc-900 dark:text-white text-2xl outline-none placeholder-zinc-400 dark:placeholder-zinc-500 font-headline" />
-        <button id="search-close" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+        <input id="search-input" type="text" placeholder="Search products, categories…"
+          class="flex-1 bg-transparent text-zinc-900 dark:text-white text-2xl outline-none placeholder-zinc-400 dark:placeholder-zinc-500 font-headline" />
+        <button id="search-close"
+          class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
           <span class="material-symbols-outlined text-3xl">close</span>
         </button>
       </div>
@@ -1086,13 +1106,16 @@
   </div>
 
   <!-- ===== CART SIDEBAR ===== -->
-  <div id="cart-overlay" class="fixed inset-0 z-[180] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md z-[190] flex flex-col transition-transform duration-400 translate-x-full bg-white/95 dark:bg-[#080812]/97 border-l border-zinc-200 dark:border-cyan-400/20 backdrop-blur-xl">
+  <div id="cart-overlay"
+    class="fixed inset-0 z-[180] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-sidebar"
+    class="fixed top-0 right-0 h-full w-full max-w-md z-[190] flex flex-col transition-transform duration-400 translate-x-full bg-white/95 dark:bg-[#080812]/95 border-l border-zinc-200 dark:border-cyan-400/20 backdrop-blur-xl">
     <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200 dark:border-cyan-400/20">
       <h2 class="text-zinc-900 dark:text-white font-headline text-xl font-bold flex items-center gap-2">
         <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400">shopping_cart</span> Your Cart
       </h2>
-      <button id="cart-close" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+      <button id="cart-close"
+        class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
@@ -1103,16 +1126,20 @@
       <div class="flex justify-between text-zinc-900 dark:text-white font-bold text-lg mb-4">
         <span>Total</span><span id="cart-total">LKR 0</span>
       </div>
-      <button class="w-full py-3 rounded-xl font-bold text-white dark:text-black text-base transition-all duration-300 hover:scale-105 bg-cyan-600 dark:bg-[linear-gradient(135deg,#00ffff,#0066ff)] shadow-lg dark:shadow-[0_0_20px_rgba(0,255,255,0.3)]">Checkout</button>
+      <button
+        class="w-full py-3 rounded-xl font-bold text-white dark:text-black text-base transition-all duration-300 hover:scale-105 bg-cyan-600 dark:bg-[linear-gradient(135deg,#00ffff,#0066ff)] shadow-lg dark:shadow-[0_0_20px_rgba(0,255,255,0.3)]">Checkout</button>
     </div>
   </aside>
 
   <!-- ===== PROFILE PANEL ===== -->
-  <div id="profile-overlay" class="fixed inset-0 z-[180] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="profile-sidebar" class="fixed top-0 right-0 h-full w-full max-w-sm z-[190] flex flex-col transition-transform duration-400 translate-x-full bg-white/95 dark:bg-[#080812]/97 border-l border-zinc-200 dark:border-purple-500/20 backdrop-blur-xl">
+  <div id="profile-overlay"
+    class="fixed inset-0 z-[180] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="profile-sidebar"
+    class="fixed top-0 right-0 h-full w-full max-w-sm z-[190] flex flex-col transition-transform duration-400 translate-x-full bg-white/95 dark:bg-[#080812]/95 border-l border-zinc-200 dark:border-purple-500/20 backdrop-blur-xl">
     <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200 dark:border-purple-500/20">
       <h2 class="text-zinc-900 dark:text-white font-headline text-xl font-bold">My Profile</h2>
-      <button id="profile-close" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+      <button id="profile-close"
+        class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
@@ -1125,23 +1152,33 @@
           <h3 class="text-zinc-900 dark:text-white font-headline text-2xl font-bold mb-4">Login</h3>
           <form class="space-y-4">
             <div>
-              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Username or email address <span class="text-red-500">*</span></label>
-              <input type="text" class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
+              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Username or email address
+                <span class="text-red-500">*</span></label>
+              <input type="text"
+                class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
             </div>
             <div>
-              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Password <span class="text-red-500">*</span></label>
+              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Password <span
+                  class="text-red-500">*</span></label>
               <div class="relative">
-                <input type="password" class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500 cursor-pointer hover:text-zinc-900 dark:hover:text-white">visibility_off</span>
+                <input type="password"
+                  class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
+                <span
+                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500 cursor-pointer hover:text-zinc-900 dark:hover:text-white">visibility_off</span>
               </div>
             </div>
             <div class="flex items-center gap-2">
-              <input type="checkbox" id="remember" class="rounded bg-zinc-50 dark:bg-white/5 border-zinc-300 dark:border-white/10 text-cyan-600 dark:text-cyan-400 focus:ring-cyan-500 dark:focus:ring-cyan-400" />
+              <input type="checkbox" id="remember"
+                class="rounded bg-zinc-50 dark:bg-white/5 border-zinc-300 dark:border-white/10 text-cyan-600 dark:text-cyan-400 focus:ring-cyan-500 dark:focus:ring-cyan-400" />
               <label for="remember" class="text-sm text-zinc-600 dark:text-zinc-400 font-medium">Remember me</label>
             </div>
-            <button type="button" id="demo-login-btn" class="w-full py-3 rounded-xl font-bold text-white dark:text-black text-base transition-all duration-300 hover:scale-105 bg-cyan-600 dark:bg-[linear-gradient(135deg,#00ffff,#0066ff)] shadow-lg dark:shadow-[0_0_20px_rgba(0,255,255,0.3)]">Log in</button>
+            <button type="button" id="demo-login-btn"
+              class="w-full py-3 rounded-xl font-bold text-white dark:text-black text-base transition-all duration-300 hover:scale-105 bg-cyan-600 dark:bg-[linear-gradient(135deg,#00ffff,#0066ff)] shadow-lg dark:shadow-[0_0_20px_rgba(0,255,255,0.3)]">Log
+              in</button>
             <div class="pt-2">
-              <a href="#" class="text-sm text-cyan-600 dark:text-cyan-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Lost your password?</a>
+              <a href="#"
+                class="text-sm text-cyan-600 dark:text-cyan-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Lost
+                your password?</a>
             </div>
           </form>
         </div>
@@ -1153,16 +1190,21 @@
           <h3 class="text-zinc-900 dark:text-white font-headline text-2xl font-bold mb-4">Register</h3>
           <form class="space-y-4">
             <div>
-              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Email address <span class="text-red-500">*</span></label>
-              <input type="email" class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
+              <label class="block text-sm font-semibold text-zinc-500 dark:text-zinc-300 mb-1">Email address <span
+                  class="text-red-500">*</span></label>
+              <input type="email"
+                class="w-full bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-3 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 transition-colors" />
             </div>
             <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed pt-2">
               A link to set a new password will be sent to your email address.
             </p>
             <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-              Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#" class="text-cyan-600 dark:text-cyan-400 hover:underline">privacy policy</a>.
+              Your personal data will be used to support your experience throughout this website, to manage access to
+              your account, and for other purposes described in our <a href="#"
+                class="text-cyan-600 dark:text-cyan-400 hover:underline">privacy policy</a>.
             </p>
-            <button type="button" class="w-full py-3 rounded-xl font-bold text-zinc-800 dark:text-white text-base transition-all duration-300 hover:scale-105 mt-2 bg-zinc-200 dark:bg-white/10 border border-zinc-300 dark:border-white/20">Register</button>
+            <button type="button"
+              class="w-full py-3 rounded-xl font-bold text-zinc-800 dark:text-white text-base transition-all duration-300 hover:scale-105 mt-2 bg-zinc-200 dark:bg-white/10 border border-zinc-300 dark:border-white/20">Register</button>
           </form>
         </div>
       </div>
@@ -1171,37 +1213,50 @@
       <div id="profile-logged-in" class="hidden">
         <!-- Avatar & identity -->
         <div class="flex flex-col items-center gap-3 pb-8 border-b border-zinc-200 dark:border-white/10">
-          <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl font-bold text-black" style="background:linear-gradient(135deg,#00ffff,#b000ff)">T</div>
+          <div class="w-24 h-24 rounded-full flex items-center justify-center text-5xl font-bold text-black"
+            style="background:linear-gradient(135deg,#00ffff,#b000ff)">T</div>
           <div class="text-center mt-2">
             <p class="text-zinc-900 dark:text-white font-bold text-xl leading-tight">TechZone Member</p>
             <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-1">member@techzone.lk</p>
           </div>
-          <span class="px-4 py-1.5 rounded-full text-xs font-bold text-white dark:text-black mt-2 bg-cyan-600 dark:bg-[linear-gradient(90deg,#00ffff,#0066ff)]">Premium Member</span>
+          <span
+            class="px-4 py-1.5 rounded-full text-xs font-bold text-white dark:text-black mt-2 bg-cyan-600 dark:bg-[linear-gradient(90deg,#00ffff,#0066ff)]">Platinum
+            Member</span>
         </div>
 
         <!-- Nav links -->
         <nav class="space-y-4 pt-6">
-          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
-            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">receipt_long</span>
+          <a href="#"
+            class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400"
+              style="font-size:26px">receipt_long</span>
             <span class="text-lg font-medium">My Orders</span>
           </a>
-          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
-            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">favorite</span>
+          <a href="#"
+            class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400"
+              style="font-size:26px">favorite</span>
             <span class="text-lg font-medium">Wishlist</span>
           </a>
-          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
-            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">local_shipping</span>
+          <a href="#"
+            class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400"
+              style="font-size:26px">local_shipping</span>
             <span class="text-lg font-medium">Track Order</span>
           </a>
-          <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
-            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400" style="font-size:26px">settings</span>
+          <a href="#"
+            class="flex items-center gap-4 px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+            <span class="material-symbols-outlined text-cyan-600 dark:text-cyan-400"
+              style="font-size:26px">settings</span>
             <span class="text-lg font-medium">Account Settings</span>
           </a>
         </nav>
 
         <!-- Sign out -->
         <div class="pt-10">
-          <button type="button" id="demo-logout-btn" class="w-full py-4 rounded-xl border border-zinc-200 dark:border-white/10 font-semibold text-base text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-50 dark:bg-[rgba(255,255,255,0.02)] transition-all">Sign Out</button>
+          <button type="button" id="demo-logout-btn"
+            class="w-full py-4 rounded-xl border border-zinc-200 dark:border-white/10 font-semibold text-base text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-50 dark:bg-[rgba(255,255,255,0.02)] transition-all">Sign
+            Out</button>
         </div>
       </div>
 
@@ -1309,11 +1364,11 @@
     // ── Cart open/close ───────────────────────────────────────
     function openCart() {
       document.getElementById('cart-sidebar').style.transform = 'translateX(0)';
-      document.getElementById('cart-overlay').classList.remove('opacity-0','pointer-events-none');
+      document.getElementById('cart-overlay').classList.remove('opacity-0', 'pointer-events-none');
     }
     function closeCart() {
       document.getElementById('cart-sidebar').style.transform = 'translateX(100%)';
-      document.getElementById('cart-overlay').classList.add('opacity-0','pointer-events-none');
+      document.getElementById('cart-overlay').classList.add('opacity-0', 'pointer-events-none');
     }
     document.getElementById('cart-btn').addEventListener('click', openCart);
     document.getElementById('cart-close').addEventListener('click', closeCart);
@@ -1322,11 +1377,11 @@
     // ── Profile open/close ────────────────────────────────────
     function openProfile() {
       document.getElementById('profile-sidebar').style.transform = 'translateX(0)';
-      document.getElementById('profile-overlay').classList.remove('opacity-0','pointer-events-none');
+      document.getElementById('profile-overlay').classList.remove('opacity-0', 'pointer-events-none');
     }
     function closeProfile() {
       document.getElementById('profile-sidebar').style.transform = 'translateX(100%)';
-      document.getElementById('profile-overlay').classList.add('opacity-0','pointer-events-none');
+      document.getElementById('profile-overlay').classList.add('opacity-0', 'pointer-events-none');
     }
     document.getElementById('profile-btn').addEventListener('click', openProfile);
     document.getElementById('profile-close').addEventListener('click', closeProfile);
@@ -1334,44 +1389,44 @@
 
     // ── Search overlay ────────────────────────────────────────
     const allProducts = [
-      { name:'TechZone X Pro', price:280000, cat:'Smartphones' },
-      { name:'TechZone Lite', price:180000, cat:'Smartphones' },
-      { name:'TechZone Ultra', price:380000, cat:'Smartphones', oos:true },
-      { name:'TechZone ZenBook', price:280000, cat:'Laptops' },
-      { name:'TechZone Air', price:180000, cat:'Laptops' },
-      { name:'TechZone Gaming Laptop', price:380000, cat:'Laptops' },
-      { name:'TechZone Buds', price:28000, cat:'Audio' },
-      { name:'TechZone Over-Ear', price:38000, cat:'Audio' },
-      { name:'TechZone Pro Headphones', price:48000, cat:'Audio', oos:true },
-      { name:'TechZone Watch', price:28000, cat:'Wearables' },
-      { name:'TechZone Band', price:18000, cat:'Wearables' },
-      { name:'TechZone Watch Ultra', price:48000, cat:'Wearables' },
-      { name:'TechZone Controller', price:16000, cat:'Gaming' },
-      { name:'TechZone Keyboard', price:26000, cat:'Gaming' },
-      { name:'TechZone Mouse', price:12000, cat:'Gaming' },
-      { name:'TechZone X Pro 2', price:0, cat:'New Arrivals' },
-      { name:'Buds Air Pro', price:0, cat:'New Arrivals' },
-      { name:'Ultra Charger', price:12000, cat:'New Arrivals' },
-      { name:'Pro Stand', price:18000, cat:'New Arrivals' },
+      { name: 'TechZone X Pro', price: 280000, cat: 'Smartphones' },
+      { name: 'TechZone Lite', price: 180000, cat: 'Smartphones' },
+      { name: 'TechZone Ultra', price: 380000, cat: 'Smartphones', oos: true },
+      { name: 'TechZone ZenBook', price: 280000, cat: 'Laptops' },
+      { name: 'TechZone Air', price: 180000, cat: 'Laptops' },
+      { name: 'TechZone Gaming Laptop', price: 380000, cat: 'Laptops' },
+      { name: 'TechZone Buds', price: 28000, cat: 'Audio' },
+      { name: 'TechZone Over-Ear', price: 38000, cat: 'Audio' },
+      { name: 'TechZone Pro Headphones', price: 48000, cat: 'Audio', oos: true },
+      { name: 'TechZone Watch', price: 28000, cat: 'Wearables' },
+      { name: 'TechZone Band', price: 18000, cat: 'Wearables' },
+      { name: 'TechZone Watch Ultra', price: 48000, cat: 'Wearables' },
+      { name: 'TechZone Controller', price: 16000, cat: 'Gaming' },
+      { name: 'TechZone Keyboard', price: 26000, cat: 'Gaming' },
+      { name: 'TechZone Mouse', price: 12000, cat: 'Gaming' },
+      { name: 'TechZone X Pro 2', price: 0, cat: 'New Arrivals' },
+      { name: 'Buds Air Pro', price: 0, cat: 'New Arrivals' },
+      { name: 'Ultra Charger', price: 12000, cat: 'New Arrivals' },
+      { name: 'Pro Stand', price: 18000, cat: 'New Arrivals' },
     ];
 
     function openSearch() {
       const ov = document.getElementById('search-overlay');
-      ov.classList.remove('opacity-0','pointer-events-none');
+      ov.classList.remove('opacity-0', 'pointer-events-none');
       document.getElementById('search-input').focus();
       document.getElementById('search-results').innerHTML = '';
       document.getElementById('search-hint').style.display = '';
     }
     function closeSearch() {
       const ov = document.getElementById('search-overlay');
-      ov.classList.add('opacity-0','pointer-events-none');
+      ov.classList.add('opacity-0', 'pointer-events-none');
       document.getElementById('search-input').value = '';
     }
     document.getElementById('search-btn').addEventListener('click', openSearch);
     document.getElementById('search-close').addEventListener('click', closeSearch);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSearch(); closeCart(); closeProfile(); } });
 
-    document.getElementById('search-input').addEventListener('input', function() {
+    document.getElementById('search-input').addEventListener('input', function () {
       const q = this.value.trim().toLowerCase();
       const results = document.getElementById('search-results');
       const hint = document.getElementById('search-hint');
